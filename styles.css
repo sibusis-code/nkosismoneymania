@@ -1017,13 +1017,16 @@ input[type="file"]::file-selector-button:hover {
 @media (max-width: 900px) {
   .about-grid    { grid-template-columns: 1fr; gap: 2.5rem; }
   .about-visual  { max-width: 420px; margin: 0 auto; }
-  .calc-wrapper  { grid-template-columns: 1fr; }
-  .calc-form     { border-right: none; border-bottom: 1px solid var(--bg-2); }
-  .contact-wrapper { grid-template-columns: 1fr; }
+  .calc-wrapper  { grid-template-columns: 1fr; gap: 0; }
+  .calc-form     { border-right: none; border-bottom: 2px solid var(--bg-2); padding: 2rem 1.5rem; }
+  .calc-result   { padding: 2rem 1.5rem; }
+  .contact-wrapper { grid-template-columns: 1fr; gap: 2rem; }
+  .contact-info { margin-bottom: 1rem; }
   .steps-grid .step-arrow { display: none; }
 }
 
 @media (max-width: 768px) {
+  /* Navigation */
   .hamburger { display: flex; }
   .nav-links {
     display: none;
@@ -1039,22 +1042,144 @@ input[type="file"]::file-selector-button:hover {
   .nav-links a { padding: .85rem 2rem; border-bottom: 1px solid rgba(255,255,255,0.07); width: 100%; }
   .nav-cta { margin: .5rem 1.5rem; border-radius: 8px !important; }
 
+  /* Hero */
   .hero-content { padding: 6rem 1.5rem 3rem; }
   .hero-stats   { gap: 1rem; }
   .stat-divider { height: 28px; }
 
+  /* About */
   .about-badge-float, .about-badge-float2 { display: none; }
+  
+  /* Form */
   .form-row { grid-template-columns: 1fr; }
+  .contact-form { padding: 2rem 1.5rem; }
+  .contact-info { padding: 1.8rem 1.3rem; }
+  
+  /* Contact Items - Center Content */
+  .contact-item { 
+    flex-direction: column; 
+    align-items: center; 
+    text-align: center; 
+    padding: 1rem .8rem;
+  }
+  .contact-item:hover {
+    transform: translateY(-3px);
+  }
+  .contact-icon {
+    width: 56px;
+    height: 56px;
+    font-size: 1.5rem;
+  }
+  .contact-actions {
+    padding-top: 1.2rem;
+  }
+  .contact-actions .btn {
+    width: 100%;
+    justify-content: center;
+  }
+  
+  /* Steps */
   .steps-grid { flex-direction: column; align-items: center; }
   .step { max-width: 100%; width: 100%; }
-  .footer-top { justify-content: center; text-align: center; }
+  
+  /* Footer */
+  .footer-top { 
+    justify-content: center; 
+    text-align: center; 
+    flex-direction: column;
+  }
+  .footer-brand {
+    flex-direction: column;
+    gap: .5rem;
+  }
+  .footer-tagline {
+    margin-top: .5rem;
+  }
 }
 
 @media (max-width: 480px) {
-  .section { padding: 3.5rem 0; }
-  .hero h1 { font-size: 2rem; }
-  .hero-buttons { flex-direction: column; align-items: stretch; }
-  .btn { justify-content: center; }
-  .services-grid { grid-template-columns: 1fr; }
-  .why-grid { grid-template-columns: 1fr; }
+  /* Sections */
+  .section { padding: 3rem 0; }
+  .container { padding: 0 1rem; }
+  
+  /* Hero */
+  .hero h1 { font-size: 1.9rem; }
+  .hero-subtitle { font-size: 1rem; }
+  .hero-buttons { flex-direction: column; align-items: stretch; gap: .8rem; }
+  .btn { justify-content: center; padding: .85rem 1.8rem; font-size: .92rem; }
+  .hero-stats { gap: .8rem; }
+  .stat { min-width: 70px; }
+  .stat-number { font-size: 1.2rem; }
+  .stat-label { font-size: .72rem; }
+  
+  /* Section Headers */
+  .section-header { margin-bottom: 2.5rem; }
+  .section-title { font-size: 1.7rem; }
+  .section-desc { font-size: .95rem; }
+  
+  /* Services */
+  .services-grid { grid-template-columns: 1fr; gap: 1.5rem; }
+  .service-card { padding: 2rem 1.5rem; }
+  
+  /* Why Us */
+  .why-grid { grid-template-columns: 1fr; gap: 1.2rem; }
+  .why-card { padding: 1.8rem 1.3rem; }
+  
+  /* Contact */
+  .contact-wrapper { gap: 1.5rem; }
+  .contact-form { padding: 1.8rem 1.2rem; }
+  .contact-info { padding: 1.8rem 1.2rem; }
+  .contact-info h3, .contact-form h3 { font-size: 1.15rem; margin-bottom: 1.3rem; }
+  
+  .contact-item { 
+    padding: .9rem .5rem;
+    margin-bottom: 1.2rem;
+  }
+  .contact-icon {
+    width: 52px;
+    height: 52px;
+    font-size: 1.4rem;
+  }
+  .contact-label { font-size: .74rem; }
+  .contact-value { font-size: .95rem; }
+  
+  /* Form Elements */
+  .form-section-title { font-size: .92rem; padding: .75rem 1rem; margin: 1.5rem 0 1rem; }
+  .upload-note { font-size: .82rem; padding: .7rem .9rem; }
+  .upload-note::before { font-size: 1rem; }
+  input[type="file"] { font-size: .84rem; padding: .65rem .85rem; }
+  input[type="file"]::file-selector-button { 
+    font-size: .78rem; 
+    padding: .4rem .85rem; 
+    margin-right: .8rem; 
+  }
+  
+  /* Calculator */
+  .calc-form { padding: 1.8rem 1.2rem; }
+  .calc-result { padding: 1.8rem 1.2rem; }
+  .interest-display { 
+    flex-direction: column; 
+    gap: .5rem; 
+    text-align: center; 
+    padding: .9rem 1rem; 
+  }
+  .result-details h3 { font-size: 1.15rem; }
+  .total-row { margin: 1rem -.5rem; padding: 1rem 1rem; }
+  
+  /* About */
+  .about-card-main { padding: 2rem 1.5rem; }
+  .about-text p { font-size: .95rem; }
+  .about-list { gap: .7rem; }
+  .about-list li { font-size: .93rem; }
+  
+  /* Steps */
+  .step { padding: 2rem 1.5rem 1.8rem; }
+  .step-icon { font-size: 2rem; }
+  
+  /* Footer */
+  .footer { padding: 2.5rem 0 1.8rem; }
+  .footer-brand { gap: .5rem; }
+  .footer-brand .logo-icon { font-size: 2rem; }
+  .footer-brand .logo-main { font-size: 1rem; }
+  .footer-developer { font-size: .84rem !important; }
 }
