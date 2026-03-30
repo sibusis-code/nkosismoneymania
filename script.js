@@ -188,7 +188,7 @@ chatButton.addEventListener('click', () => {
     chatButton.textContent = '✕';
     chatInput.focus();
   } else {
-    chatButton.textContent = '💬';
+    chatButton.textContent = '🎧';
   }
 });
 
