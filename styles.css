@@ -157,12 +157,19 @@ input, select, textarea { font-family: var(--font); }
   display: flex;
   align-items: center;
   gap: 1.8rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.nav-links li {
+  list-style: none;
 }
 .nav-links a {
   color: rgba(255,255,255,0.85);
   font-size: .9rem;
   font-weight: 500;
   transition: color var(--transition);
+  text-decoration: none;
 }
 .nav-links a:hover { color: var(--gold-light); }
 .nav-cta {
@@ -1036,16 +1043,20 @@ input[type="file"]::file-selector-button:hover {
 }
 
 @media (max-width: 768px) {
-  /* Navigation */
-  .hamburger { display: flex; }
+  /* Navigation - Mobile */
+  .hamburger { 
+    display: flex;
+    z-index: 1001;
+  }
+  
   .nav-links {
     display: none;
     position: fixed;
     top: 64px; 
     left: 0; 
     right: 0;
-    bottom: 0;
-    background: #1a2e20;
+    max-height: calc(100vh - 64px);
+    background: #0e7a49;
     flex-direction: column;
     align-items: stretch;
     gap: 0;
@@ -1053,57 +1064,61 @@ input[type="file"]::file-selector-button:hover {
     margin: 0;
     overflow-y: auto;
     box-shadow: 0 8px 24px rgba(0,0,0,0.5);
-    border-top: 3px solid #0e7a49;
     list-style: none;
-    z-index: 900;
+    z-index: 1000;
   }
+  
   .nav-links.open { 
     display: flex !important; 
   }
+  
   .nav-links li { 
     width: 100%;
     margin: 0;
     padding: 0;
-    display: block;
+    list-style: none;
   }
-  .nav-links a {
-    display: block !important;
+  
+  .nav-links li a {
+    display: block;
     width: 100%;
-    padding: 1.3rem 2rem;
-    border-bottom: 1px solid rgba(255,255,255,0.12);
+    padding: 1.4rem 2rem;
+    border-bottom: 1px solid rgba(255,255,255,0.15);
     font-size: 1.1rem;
     font-weight: 500;
     color: #ffffff !important;
     background: transparent;
-    transition: all 0.25s ease;
+    transition: all 0.2s ease;
     text-align: left;
     text-decoration: none;
   }
-  .nav-links a:hover {
-    background: rgba(14, 122, 73, 0.25);
-    color: #ffd166 !important;
+  
+  .nav-links li a:hover {
+    background: rgba(255, 255, 255, 0.1);
     padding-left: 2.5rem;
   }
-  .nav-links li:last-child {
+  
+  .nav-links li:last-of-type {
     margin-top: auto;
-    padding: 1.8rem 1.8rem 2.5rem;
+    padding: 1.5rem;
+    border-top: 2px solid rgba(255,255,255,0.2);
   }
-  .nav-links li:last-child a {
+  
+  .nav-links li:last-of-type a {
     border-bottom: none;
-    margin: 0;
-    width: 100%;
     padding: 1.1rem 2rem;
     background: linear-gradient(135deg, #f5a623, #ffd166) !important;
     color: #0d1b12 !important;
-    font-weight: 700 !important;
-    border-radius: 12px !important;
+    font-weight: 700;
+    border-radius: 12px;
     text-align: center;
-    box-shadow: 0 4px 16px rgba(245, 166, 35, 0.4);
+    box-shadow: 0 4px 16px rgba(245, 166, 35, 0.5);
     font-size: 1.15rem;
   }
-  .nav-links li:last-child a:hover {
+  
+  .nav-links li:last-of-type a:hover {
     background: linear-gradient(135deg, #ffd166, #f5a623) !important;
-    box-shadow: 0 6px 20px rgba(245, 166, 35, 0.6);
+    box-shadow: 0 6px 20px rgba(245, 166, 35, 0.7);
     padding-left: 2rem !important;
     transform: scale(1.02);
   }
