@@ -228,21 +228,18 @@ function sendMessage() {
 function addMessage(text, sender = 'bot') {
   const messageDiv = document.createElement('div');
   messageDiv.className = `chat-message ${sender}`;
-  
+
   const avatar = document.createElement('div');
   avatar.className = 'message-avatar';
   avatar.textContent = sender === 'user' ? '👤' : '🤖';
-  
-  const bubbleContainer = document.createElement('div');
+
   const bubble = document.createElement('div');
   bubble.className = 'message-bubble';
-  // Render line breaks properly
   bubble.innerHTML = text.replace(/\n/g, '<br>');
-  
-  bubbleContainer.appendChild(bubble);
+
   messageDiv.appendChild(avatar);
-  messageDiv.appendChild(bubbleContainer);
-  
+  messageDiv.appendChild(bubble);
+
   chatMessages.appendChild(messageDiv);
   chatMessages.scrollTop = chatMessages.scrollHeight;
 }
