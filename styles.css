@@ -1042,41 +1042,48 @@ input[type="file"]::file-selector-button:hover {
     display: none;
     position: fixed;
     top: 64px; left: 0; right: 0;
-    background: linear-gradient(135deg, var(--dark) 0%, #0a1612 100%);
+    bottom: 0;
+    background: #0d1b12;
     flex-direction: column;
     gap: 0;
-    padding: 1.5rem 0 1rem;
-    box-shadow: 0 8px 24px rgba(0,0,0,0.35);
-    border-bottom: 2px solid var(--primary);
+    padding: 0.5rem 0 2rem;
+    overflow-y: auto;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.4);
+    border-top: 2px solid #0e7a49;
+    list-style: none;
   }
   .nav-links.open { display: flex; }
-  .nav-links a { 
-    padding: 1.1rem 2rem; 
-    border-bottom: 1px solid rgba(255,255,255,0.05); 
-    width: 100%; 
-    transition: all 0.3s ease;
-    font-size: 1.05rem;
+  .nav-links li { width: 100%; }
+  .nav-links a {
+    display: block;
+    width: 100%;
+    padding: 1.05rem 1.8rem;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+    font-size: 1rem;
     font-weight: 500;
+    color: rgba(255,255,255,0.88);
+    transition: background 0.2s ease, color 0.2s ease;
+    text-align: left;
   }
   .nav-links a:hover {
-    background: rgba(14, 122, 73, 0.15);
-    padding-left: 2.5rem;
-    border-left: 3px solid var(--primary);
+    background: rgba(14, 122, 73, 0.18);
+    color: #ffd166;
   }
   .nav-links li:last-child a {
     border-bottom: none;
+    margin: 1.2rem 1.4rem 0;
+    width: calc(100% - 2.8rem);
+    padding: 0.95rem 1.5rem;
+    background: linear-gradient(135deg, #f5a623, #ffd166) !important;
+    color: #0d1b12 !important;
+    font-weight: 700 !important;
+    border-radius: 10px !important;
+    text-align: center;
+    box-shadow: 0 4px 14px rgba(245, 166, 35, 0.35);
   }
-  .nav-cta { 
-    margin: 1rem 1.5rem 0.5rem; 
-    border-radius: 8px !important; 
-    padding: 1rem 2rem !important;
-    background: linear-gradient(135deg, var(--gold), var(--gold-light)) !important;
-    box-shadow: 0 3px 10px rgba(245, 166, 35, 0.4) !important;
-  }
-  .nav-cta:hover {
-    padding-left: 2rem !important;
-    border-left: none !important;
-    box-shadow: 0 4px 14px rgba(245, 166, 35, 0.6) !important;
+  .nav-links li:last-child a:hover {
+    background: linear-gradient(135deg, #ffd166, #f5a623) !important;
+    box-shadow: 0 6px 18px rgba(245, 166, 35, 0.55);
   }
 
   /* Hero */
