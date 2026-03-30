@@ -178,17 +178,29 @@ const chatInput = document.getElementById('chatInput');
 const chatSendBtn = document.getElementById('chatSendBtn');
 const chatMessages = document.getElementById('chatMessages');
 
+// Auto-open chatbot after 3 seconds on page load
+setTimeout(() => {
+  if (!chatWindow.classList.contains('open')) {
+    chatWindow.classList.add('open');
+    chatButton.classList.add('active');
+    document.getElementById('chatIconOpen').style.display = 'none';
+    document.getElementById('chatIconClose').style.display = 'block';
+  }
+}, 3000);
+
 // Toggle chat window
 chatButton.addEventListener('click', () => {
   chatWindow.classList.toggle('open');
   chatButton.classList.toggle('active');
-  
-  // Change icon
+  const iconOpen  = document.getElementById('chatIconOpen');
+  const iconClose = document.getElementById('chatIconClose');
   if (chatWindow.classList.contains('open')) {
-    chatButton.textContent = '✕';
+    iconOpen.style.display  = 'none';
+    iconClose.style.display = 'block';
     chatInput.focus();
   } else {
-    chatButton.textContent = '🎧';
+    iconOpen.style.display  = 'block';
+    iconClose.style.display = 'none';
   }
 });
 
@@ -219,12 +231,13 @@ function addMessage(text, sender = 'bot') {
   
   const avatar = document.createElement('div');
   avatar.className = 'message-avatar';
-  avatar.textContent = sender === 'user' ? '👤' : '💰';
+  avatar.textContent = sender === 'user' ? '👤' : '🤖';
   
   const bubbleContainer = document.createElement('div');
   const bubble = document.createElement('div');
   bubble.className = 'message-bubble';
-  bubble.textContent = text;
+  // Render line breaks properly
+  bubble.innerHTML = text.replace(/\n/g, '<br>');
   
   bubbleContainer.appendChild(bubble);
   messageDiv.appendChild(avatar);
