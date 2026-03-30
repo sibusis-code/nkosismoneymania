@@ -169,6 +169,107 @@ document.querySelectorAll(
   observer.observe(el);
 });
 
+// ────────────────────────────────────────────────────
+// CHATBOT
+// ────────────────────────────────────────────────────
+const chatButton = document.getElementById('chatButton');
+const chatWindow = document.getElementById('chatWindow');
+const chatInput = document.getElementById('chatInput');
+const chatSendBtn = document.getElementById('chatSendBtn');
+const chatMessages = document.getElementById('chatMessages');
+
+// Toggle chat window
+chatButton.addEventListener('click', () => {
+  chatWindow.classList.toggle('open');
+  chatButton.classList.toggle('active');
+  
+  // Change icon
+  if (chatWindow.classList.contains('open')) {
+    chatButton.textContent = '✕';
+    chatInput.focus();
+  } else {
+    chatButton.textContent = '💬';
+  }
+});
+
+// Send message function
+function sendMessage() {
+  const message = chatInput.value.trim();
+  if (!message) return;
+  
+  // Add user message
+  addMessage(message, 'user');
+  chatInput.value = '';
+  
+  // Auto-scroll to bottom
+  setTimeout(() => {
+    chatMessages.scrollTop = chatMessages.scrollHeight;
+  }, 100);
+  
+  // Simulate bot response
+  setTimeout(() => {
+    botResponse(message);
+  }, 800);
+}
+
+// Add message to chat
+function addMessage(text, sender = 'bot') {
+  const messageDiv = document.createElement('div');
+  messageDiv.className = `chat-message ${sender}`;
+  
+  const avatar = document.createElement('div');
+  avatar.className = 'message-avatar';
+  avatar.textContent = sender === 'user' ? '👤' : '💰';
+  
+  const bubbleContainer = document.createElement('div');
+  const bubble = document.createElement('div');
+  bubble.className = 'message-bubble';
+  bubble.textContent = text;
+  
+  bubbleContainer.appendChild(bubble);
+  messageDiv.appendChild(avatar);
+  messageDiv.appendChild(bubbleContainer);
+  
+  chatMessages.appendChild(messageDiv);
+  chatMessages.scrollTop = chatMessages.scrollHeight;
+}
+
+// Bot response logic
+function botResponse(userMessage) {
+  const msg = userMessage.toLowerCase();
+  let response = '';
+  
+  if (msg.includes('hello') || msg.includes('hi') || msg.includes('hey')) {
+    response = 'Hello! How can I assist you with your loan application today?';
+  } else if (msg.includes('loan') || msg.includes('apply') || msg.includes('application')) {
+    response = 'Great! You can apply for a loan by filling out our application form. We offer amounts from R500 to R10,000. Would you like me to direct you to the application form?';
+  } else if (msg.includes('interest') || msg.includes('rate')) {
+    response = 'Our interest rate is 40% monthly repayment. You can use our calculator to see exact amounts based on your loan needs.';
+  } else if (msg.includes('document') || msg.includes('requirement') || msg.includes('need')) {
+    response = 'You\'ll need: Valid ID, Latest payslip, 3 months bank statement, and Proof of bank account. All documents can be uploaded in our application form.';
+  } else if (msg.includes('contact') || msg.includes('phone') || msg.includes('email')) {
+    response = 'You can reach us at:\n📞 079 788 2238\n📧 info@nkosismoneymania.co.za\n🌐 www.nkosismoneymania.co.za';
+  } else if (msg.includes('thank')) {
+    response = 'You\'re welcome! Is there anything else I can help you with?';
+  } else if (msg.includes('time') || msg.includes('how long') || msg.includes('fast')) {
+    response = 'We process applications quickly! Most approvals happen within 24 hours, and funds are typically transferred within 1-2 business days.';
+  } else {
+    response = 'I\'m here to help! You can ask me about loan applications, interest rates, required documents, or contact information. Would you like to speak with our team directly?';
+  }
+  
+  addMessage(response, 'bot');
+}
+
+// Send on button click
+chatSendBtn.addEventListener('click', sendMessage);
+
+// Send on Enter key
+chatInput.addEventListener('keypress', (e) => {
+  if (e.key === 'Enter') {
+    sendMessage();
+  }
+});
+
 document.addEventListener('DOMContentLoaded', () => {
   // Ensure animated elements reset properly if already visible on load
   document.querySelectorAll('.animate-in').forEach(el => {

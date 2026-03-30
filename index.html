@@ -435,6 +435,43 @@
     </div>
   </footer>
 
+  <!-- ===== CHATBOT ===== -->
+  <div class="chatbot-container">
+    <button class="chat-button" id="chatButton" aria-label="Open chat">
+      💬
+    </button>
+    <div class="chat-window" id="chatWindow">
+      <div class="chat-header">
+        <div class="chat-avatar">💰</div>
+        <div class="chat-info">
+          <h4>Nkosis Money Mania</h4>
+          <p>We're here to help!</p>
+        </div>
+      </div>
+      <div class="chat-messages" id="chatMessages">
+        <div class="chat-message">
+          <div class="message-avatar">💰</div>
+          <div>
+            <div class="message-bubble">
+              Hi! 👋 Welcome to Nkosis Money Mania. How can we help you today?
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="chat-input-area">
+        <input 
+          type="text" 
+          id="chatInput" 
+          placeholder="Type your message..." 
+          autocomplete="off"
+        />
+        <button class="chat-send-btn" id="chatSendBtn" aria-label="Send message">
+          ➤
+        </button>
+      </div>
+    </div>
+  </div>
+
   <script src="script.js"></script>
 </body>
 </html>
